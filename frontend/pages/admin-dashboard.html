@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Admin dashboard · CivicEvents+</title>
+  <meta name="description" content="Administrative overview of CivicEvents+.">
+  <link rel="icon" href="../assets/images/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+  <main id="main">
+    <div class="mb-6 flex flex-col gap-4 sm:mb-8 sm:flex-row sm:items-end sm:justify-between">
+      <div>
+        <p class="eyebrow">Administration</p>
+        <h1 class="page-title">Dashboard</h1>
+        <p class="page-subtitle">Live statistics from the CivicEvents+ database.</p>
+      </div>
+      <div class="flex flex-wrap gap-2"><a href="event-form.html" class="btn-primary"><span data-icon="plus"></span>New event</a><a href="admin-announcements.html?new=1" class="btn-accent"><span data-icon="mic"></span>New announcement</a><a href="admin-promos.html?new=1" class="btn-outline"><span data-icon="film"></span>New promo</a></div>
+    </div>
+    <section aria-labelledby="kpi-title">
+      <h2 id="kpi-title" class="sr-only">Key statistics</h2>
+      <div id="kpis" class="grid grid-cols-2 gap-4 xl:grid-cols-4" aria-busy="true"></div>
+    </section>
+
+    <div class="mt-6 grid gap-6 xl:grid-cols-3">
+      <section class="card card-pad xl:col-span-2" aria-labelledby="growth-title">
+        <div class="flex items-center justify-between">
+          <h2 id="growth-title" class="section-title">New users per month</h2>
+          <span class="text-xs text-ink-muted">Last 6 months</span>
+        </div>
+        <div id="growth-chart" class="mt-6"></div>
+      </section>
+      <section class="card card-pad" aria-labelledby="events-mix-title">
+        <h2 id="events-mix-title" class="section-title">Events by timing</h2>
+        <div id="events-chart" class="mt-6"></div>
+      </section>
+    </div>
+
+    <div class="mt-6 grid gap-6 xl:grid-cols-3">
+      <section class="card card-pad" aria-labelledby="content-title">
+        <h2 id="content-title" class="section-title">Content &amp; engagement</h2>
+        <div id="content-chart" class="mt-6"></div>
+      </section>
+      <section class="card card-pad" aria-labelledby="recent-events-title">
+        <div class="mb-3 flex items-center justify-between">
+          <h2 id="recent-events-title" class="section-title">Recently added events</h2>
+          <a href="admin-events.html" class="text-sm font-semibold no-underline hover:underline">Manage</a>
+        </div>
+        <div id="recent-events"></div>
+      </section>
+      <section class="card card-pad" aria-labelledby="activity-title">
+        <div class="mb-3 flex items-center justify-between">
+          <h2 id="activity-title" class="section-title">Recent activity</h2>
+          <a href="admin-notifications.html" class="text-sm font-semibold no-underline hover:underline">View all</a>
+        </div>
+        <div id="activity"></div>
+      </section>
+    </div>
+  </main>
+
+  <script src="../js/vendor/jquery.min.js"></script>
+  <script src="../js/config.js"></script>
+  <script src="../js/utils.js"></script>
+  <script src="../js/icons.js"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/api.js"></script>
+  <script src="../js/ui.js"></script>
+  <script src="../js/validation.js"></script>
+  <script src="../js/notifications.js"></script>
+  <script src="../js/layout.js"></script>
+  <script src="../js/media.js"></script>
+  <script src="../js/components.js"></script>
+  <script src="../js/charts.js"></script>
+  <script src="../js/pages/admin-dashboard.js"></script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Manage notifications · CivicEvents+</title>
+  <meta name="description" content="Review and remove notifications.">
+  <link rel="icon" href="../assets/images/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+  <main id="main">
+    <div class="mb-6 flex flex-col gap-4 sm:mb-8 sm:flex-row sm:items-end sm:justify-between">
+      <div>
+        <p class="eyebrow">Administration</p>
+        <h1 class="page-title">Notifications management</h1>
+        <p class="page-subtitle">Every notification visible to residents. Remove outdated or incorrect ones.</p>
+      </div>
+      <button type="button" class="btn-outline" id="refresh"><span data-icon="refresh"></span>Refresh</button>
+    </div>
+    <div class="mb-5 flex items-start gap-3 rounded-2xl border border-line bg-white p-4 text-sm text-ink-soft">
+      <span class="mt-0.5 text-brand-strong" data-icon="info"></span>
+      <p>Broadcast notifications are created automatically by the backend whenever an event, announcement or promo is created or published. The API does not provide an endpoint for composing custom notifications.</p>
+    </div>
+    <section class="card overflow-hidden" aria-labelledby="table-title">
+      <div class="flex flex-col gap-3 border-b border-line p-4 sm:flex-row sm:items-end">
+        <h2 id="table-title" class="sr-only">Notifications table</h2>
+        <div class="w-full sm:max-w-xs">
+          <label for="q" class="form-label">Search</label>
+          <input id="q" type="search" class="form-input" placeholder="Title or message" autocomplete="off">
+        </div>
+        <div class="w-full sm:w-48">
+          <label for="type-filter" class="form-label">Type</label>
+          <select id="type-filter" class="form-input"><option value="all">All types</option><option value="event">Event</option><option value="announcement">Announcement</option><option value="promo">Promo</option><option value="system">System</option></select>
+        </div>
+      </div>
+      <div id="table-host" class="table-wrap"></div>
+    </section>
+    <p id="results-count" class="mt-3 text-sm text-ink-soft" role="status" aria-live="polite"></p>
+    <nav id="pagination" class="mt-6"></nav>
+  </main>
+
+  <script src="../js/vendor/jquery.min.js"></script>
+  <script src="../js/config.js"></script>
+  <script src="../js/utils.js"></script>
+  <script src="../js/icons.js"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/api.js"></script>
+  <script src="../js/ui.js"></script>
+  <script src="../js/validation.js"></script>
+  <script src="../js/notifications.js"></script>
+  <script src="../js/layout.js"></script>
+  <script src="../js/media.js"></script>
+  <script src="../js/components.js"></script>
+  <script src="../js/pages/admin-notifications.js"></script>
+</body>
+</html>

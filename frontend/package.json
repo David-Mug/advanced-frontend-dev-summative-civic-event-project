@@ -1,0 +1,16 @@
+{
+  "name": "civic-events-frontend",
+  "version": "1.0.0",
+  "private": true,
+  "description": "CivicEvents+ frontend — HTML5, Tailwind CSS, jQuery",
+  "scripts": {
+    "build:css": "tailwindcss -i ./css/tailwind.input.css -o ./css/styles.css --minify",
+    "watch:css": "tailwindcss -i ./css/tailwind.input.css -o ./css/styles.css --watch",
+    "vendor": "node -e \"require('fs').copyFileSync('node_modules/jquery/dist/jquery.min.js','js/vendor/jquery.min.js')\"",
+    "start": "python3 -m http.server 5500"
+  },
+  "devDependencies": {
+    "jquery": "3.7.1",
+    "tailwindcss": "3.4.17"
+  }
+}

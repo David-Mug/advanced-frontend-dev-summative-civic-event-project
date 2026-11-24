@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Manage events · CivicEvents+</title>
+  <meta name="description" content="Create, edit and delete civic events.">
+  <link rel="icon" href="../assets/images/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+  <main id="main">
+    <div class="mb-6 flex flex-col gap-4 sm:mb-8 sm:flex-row sm:items-end sm:justify-between">
+      <div>
+        <p class="eyebrow">Administration</p>
+        <h1 class="page-title">Events management</h1>
+        <p class="page-subtitle">Every event in the system, including drafts.</p>
+      </div>
+      <a href="event-form.html" class="btn-primary"><span data-icon="plus"></span>Create event</a>
+    </div>
+    <section class="card overflow-hidden" aria-labelledby="table-title">
+      <div class="flex flex-col gap-3 border-b border-line p-4 sm:flex-row sm:items-end sm:justify-between">
+        <h2 id="table-title" class="sr-only">Events table</h2>
+        <div class="w-full sm:max-w-xs">
+          <label for="q" class="form-label">Search</label>
+          <input id="q" type="search" class="form-input" placeholder="Title or location" autocomplete="off">
+        </div>
+        <div class="w-full sm:w-48">
+          <label for="when" class="form-label">Timing</label>
+          <select id="when" class="form-input"><option value="all">All events</option><option value="upcoming">Upcoming</option><option value="live">Happening now</option><option value="past">Past</option></select>
+        </div>
+      </div>
+      <div id="table-host" class="table-wrap"></div>
+    </section>
+    <p id="results-count" class="mt-3 text-sm text-ink-soft" role="status" aria-live="polite"></p>
+    <nav id="pagination" class="mt-6"></nav>
+  </main>
+
+  <script src="../js/vendor/jquery.min.js"></script>
+  <script src="../js/config.js"></script>
+  <script src="../js/utils.js"></script>
+  <script src="../js/icons.js"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/api.js"></script>
+  <script src="../js/ui.js"></script>
+  <script src="../js/validation.js"></script>
+  <script src="../js/notifications.js"></script>
+  <script src="../js/layout.js"></script>
+  <script src="../js/media.js"></script>
+  <script src="../js/components.js"></script>
+  <script src="../js/pages/admin-events.js"></script>
+</body>
+</html>

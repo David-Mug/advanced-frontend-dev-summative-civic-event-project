@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Events · CivicEvents+</title>
+  <meta name="description" content="Browse and search civic events in your community.">
+  <link rel="icon" href="../assets/images/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+  <main id="main">
+    <div class="mb-6 flex flex-col gap-4 sm:mb-8 sm:flex-row sm:items-end sm:justify-between">
+      <div>
+        <p class="eyebrow">Community calendar</p>
+        <h1 class="page-title">Events</h1>
+        <p class="page-subtitle">Find civic events by keyword, date or location.</p>
+      </div>
+      <a href="event-form.html" class="btn-primary" data-admin-only hidden><span data-icon="plus"></span>Create event</a>
+    </div>
+    <section class="card mb-6 p-4 sm:p-5" aria-label="Search and filter events">
+      <form id="filters" class="grid gap-4 md:grid-cols-2 lg:grid-cols-12" role="search" novalidate>
+        <div class="lg:col-span-4">
+          <label for="q" class="form-label">Search</label>
+          <div class="relative">
+            <span class="pointer-events-none absolute inset-y-0 left-3 flex items-center text-ink-muted" data-icon="search"></span>
+            <input id="q" name="q" type="search" class="form-input pl-10" placeholder="Title, description or location" autocomplete="off">
+          </div>
+        </div>
+        <div class="lg:col-span-2">
+          <label for="when" class="form-label">When</label>
+          <select id="when" name="when" class="form-input">
+            <option value="upcoming">Upcoming</option>
+            <option value="week">Next 7 days</option>
+            <option value="month">Next 30 days</option>
+            <option value="past">Past events</option>
+            <option value="all">All dates</option>
+          </select>
+        </div>
+        <div class="lg:col-span-2">
+          <label for="from" class="form-label">From</label>
+          <input id="from" name="from" type="date" class="form-input">
+        </div>
+        <div class="lg:col-span-2">
+          <label for="to" class="form-label">To</label>
+          <input id="to" name="to" type="date" class="form-input">
+        </div>
+        <div class="lg:col-span-2">
+          <label for="location" class="form-label">Location</label>
+          <select id="location" name="location" class="form-input"><option value="">All locations</option></select>
+        </div>
+      </form>
+      <div class="mt-4 flex flex-wrap items-center justify-between gap-3 border-t border-line pt-4">
+        <p id="results-count" class="text-sm font-medium text-ink-soft" aria-live="polite" role="status"></p>
+        <button type="button" class="btn-ghost btn-sm" id="clear-filters"><span data-icon="x"></span>Clear filters</button>
+      </div>
+    </section>
+
+    <div id="events-grid" class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3" aria-busy="true"></div>
+    <nav id="pagination" class="mt-8"></nav>
+  </main>
+
+  <script src="../js/vendor/jquery.min.js"></script>
+  <script src="../js/config.js"></script>
+  <script src="../js/utils.js"></script>
+  <script src="../js/icons.js"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/api.js"></script>
+  <script src="../js/ui.js"></script>
+  <script src="../js/validation.js"></script>
+  <script src="../js/notifications.js"></script>
+  <script src="../js/layout.js"></script>
+  <script src="../js/media.js"></script>
+  <script src="../js/components.js"></script>
+  <script src="../js/pages/events.js"></script>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Event editor · CivicEvents+</title>
+  <meta name="description" content="Create or edit a civic event.">
+  <link rel="icon" href="../assets/images/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+  <main id="main">
+    <nav aria-label="Breadcrumb" class="mb-5"><a href="admin-events.html" class="inline-flex items-center gap-1.5 text-sm font-semibold no-underline hover:underline" data-back><span data-icon="arrowLeft"></span>Back to events management</a></nav>
+    <div class="mb-6">
+      <p class="eyebrow">Events management</p>
+      <h1 class="page-title" data-form-title>Create event</h1>
+      <p class="page-subtitle" data-form-sub>Publish a new civic event. Residents are notified automatically.</p>
+    </div>
+    <form id="event-form" class="grid gap-6 lg:grid-cols-3" novalidate>
+      <div class="card card-pad space-y-5 lg:col-span-2">
+        <div data-form-alert aria-live="assertive"></div>
+        <div>
+          <label for="title" class="form-label">Title <span class="text-danger" aria-hidden="true">*</span></label>
+          <input id="title" name="title" class="form-input" required maxlength="200" placeholder="e.g. Community Clean-Up Day">
+        </div>
+        <div>
+          <label for="description" class="form-label">Description <span class="text-danger" aria-hidden="true">*</span></label>
+          <textarea id="description" name="description" rows="6" class="form-input" required maxlength="5000" aria-describedby="description-count" placeholder="What will happen, who should attend, what to bring…"></textarea>
+          <p id="description-count" class="form-hint text-right" aria-live="polite">0 / 5000</p>
+        </div>
+        <div>
+          <label for="location" class="form-label">Location <span class="text-danger" aria-hidden="true">*</span></label>
+          <input id="location" name="location" class="form-input" required maxlength="255" placeholder="Venue, street, city">
+        </div>
+        <div class="grid gap-5 sm:grid-cols-2">
+          <div>
+            <label for="starts_at" class="form-label">Starts at <span class="text-danger" aria-hidden="true">*</span></label>
+            <input id="starts_at" name="starts_at" type="datetime-local" class="form-input" required>
+          </div>
+          <div>
+            <label for="ends_at" class="form-label">Ends at <span class="text-danger" aria-hidden="true">*</span></label>
+            <input id="ends_at" name="ends_at" type="datetime-local" class="form-input" required>
+          </div>
+        </div>
+        <fieldset class="rounded-xl border border-line bg-brand-light/50 p-4">
+          <legend class="px-1 text-sm font-semibold">Visibility</legend>
+          <div class="flex items-start gap-3">
+            <span class="mt-0.5 text-brand-strong" data-icon="info"></span>
+            <p class="text-sm text-ink-soft" data-publish-note>New events are published immediately and a notification is broadcast to all residents. The events API does not accept a publish/unpublish setting, so visibility cannot be changed here.</p>
+          </div>
+        </fieldset>
+      </div>
+
+      <div class="space-y-6">
+        <div class="card card-pad">
+          <h2 class="section-title">Event image</h2>
+          <p class="form-hint mb-3">JPG, PNG or GIF up to 2 MB.</p>
+          <div class="overflow-hidden rounded-xl border border-dashed border-line bg-brand-light" data-preview>
+            <div class="flex aspect-[16/9] flex-col items-center justify-center gap-2 text-ink-soft"><span data-icon="image"></span><span class="text-sm">No image selected</span></div>
+          </div>
+          <input id="image" name="image" type="file" accept=".jpg,.jpeg,.png,.gif,image/jpeg,image/png,image/gif" class="sr-only">
+          <label for="image" class="btn-outline mt-4 w-full cursor-pointer"><span data-icon="upload"></span><span data-file-label>Choose image</span></label>
+          <div data-upload-progress></div>
+        </div>
+        <div class="card card-pad">
+          <button type="submit" class="btn-primary w-full" data-submit>Create event</button>
+          <a href="admin-events.html" class="btn-ghost mt-2 w-full">Cancel</a>
+        </div>
+      </div>
+    </form>
+  </main>
+
+  <script src="../js/vendor/jquery.min.js"></script>
+  <script src="../js/config.js"></script>
+  <script src="../js/utils.js"></script>
+  <script src="../js/icons.js"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/api.js"></script>
+  <script src="../js/ui.js"></script>
+  <script src="../js/validation.js"></script>
+  <script src="../js/notifications.js"></script>
+  <script src="../js/layout.js"></script>
+  <script src="../js/media.js"></script>
+  <script src="../js/components.js"></script>
+  <script src="../js/pages/event-form.js"></script>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Home · CivicEvents+</title>
+  <meta name="description" content="Your CivicEvents+ dashboard.">
+  <link rel="icon" href="../assets/images/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+  <main id="main">
+    <section class="hero-pattern relative mb-8 overflow-hidden rounded-3xl bg-white p-6 shadow-card sm:p-8" aria-labelledby="greeting">
+      <div class="relative flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
+        <div>
+          <p class="eyebrow" data-today></p>
+          <h1 id="greeting" class="mt-2 font-heading text-3xl font-extrabold sm:text-4xl">Welcome back</h1>
+          <p class="mt-2 max-w-xl text-ink-soft">Here's what's happening in your community — your upcoming events, the latest announcements and new promos.</p>
+        </div>
+        <div class="flex flex-col gap-3 sm:flex-row">
+          <a href="events.html" class="btn-primary"><span data-icon="search"></span>Browse events</a>
+          <a href="registrations.html" class="btn-outline"><span data-icon="ticket"></span>My registrations</a>
+        </div>
+      </div>
+    </section>
+
+    <section aria-labelledby="stats-title" class="mb-8">
+      <h2 id="stats-title" class="sr-only">Your activity</h2>
+      <div id="stats" class="grid grid-cols-2 gap-4 lg:grid-cols-4" aria-busy="true"></div>
+    </section>
+
+    <div class="grid gap-6 lg:grid-cols-3">
+      <section class="card card-pad min-w-0 lg:col-span-2" aria-labelledby="my-upcoming-title">
+        <div class="mb-4 flex items-center justify-between">
+          <h2 id="my-upcoming-title" class="section-title">Your upcoming events</h2>
+          <a href="registrations.html" class="text-sm font-semibold no-underline hover:underline">See all</a>
+        </div>
+        <div id="my-upcoming" aria-live="polite"></div>
+      </section>
+      <section class="card card-pad min-w-0" aria-labelledby="latest-ann-title">
+        <div class="mb-4 flex items-center justify-between">
+          <h2 id="latest-ann-title" class="section-title">Latest announcements</h2>
+          <a href="announcements.html" class="text-sm font-semibold no-underline hover:underline">See all</a>
+        </div>
+        <div id="latest-announcements" aria-live="polite"></div>
+      </section>
+    </div>
+
+    <section class="mt-10" aria-labelledby="discover-title">
+      <div class="mb-4 flex items-end justify-between">
+        <div><p class="eyebrow">Discover</p><h2 id="discover-title" class="section-title mt-1 text-xl">Coming up soon</h2></div>
+        <a href="events.html" class="text-sm font-semibold no-underline hover:underline">All events</a>
+      </div>
+      <div id="upcoming-events" class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3" aria-live="polite"></div>
+    </section>
+
+    <section class="mt-10" aria-labelledby="promos-title">
+      <div class="mb-4 flex items-end justify-between">
+        <div><p class="eyebrow">Watch</p><h2 id="promos-title" class="section-title mt-1 text-xl">Community promos</h2></div>
+        <a href="promos.html" class="text-sm font-semibold no-underline hover:underline">All promos</a>
+      </div>
+      <div id="promos" class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3" aria-live="polite"></div>
+    </section>
+  </main>
+
+  <script src="../js/vendor/jquery.min.js"></script>
+  <script src="../js/config.js"></script>
+  <script src="../js/utils.js"></script>
+  <script src="../js/icons.js"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/api.js"></script>
+  <script src="../js/ui.js"></script>
+  <script src="../js/validation.js"></script>
+  <script src="../js/notifications.js"></script>
+  <script src="../js/layout.js"></script>
+  <script src="../js/media.js"></script>
+  <script src="../js/components.js"></script>
+  <script src="../js/pages/dashboard.js"></script>
+</body>
+</html>

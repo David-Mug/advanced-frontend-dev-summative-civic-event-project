@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>My profile · CivicEvents+</title>
+  <meta name="description" content="View and update your profile.">
+  <link rel="icon" href="../assets/images/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+  <main id="main">
+    <div class="mb-6 flex flex-col gap-4 sm:mb-8 sm:flex-row sm:items-end sm:justify-between">
+      <div>
+        <p class="eyebrow">Account</p>
+        <h1 class="page-title">My profile</h1>
+        <p class="page-subtitle">Keep your contact details up to date.</p>
+      </div>
+      
+    </div>
+    <div class="grid gap-6 lg:grid-cols-3">
+      <section class="card card-pad" aria-labelledby="summary-title">
+        <h2 id="summary-title" class="sr-only">Account summary</h2>
+        <div id="profile-summary" aria-live="polite"></div>
+      </section>
+      <section class="card card-pad lg:col-span-2" aria-labelledby="edit-title">
+        <h2 id="edit-title" class="section-title">Edit details</h2>
+        <p class="mt-1 text-sm text-ink-soft">You can change your name and email. Your role and account status are managed by the platform and cannot be edited.</p>
+        <form id="profile-form" class="mt-6 space-y-5" novalidate>
+          <div data-form-alert aria-live="assertive"></div>
+          <div>
+            <label for="full_name" class="form-label">Full name</label>
+            <input id="full_name" name="full_name" class="form-input" autocomplete="name" required maxlength="255">
+          </div>
+          <div>
+            <label for="email" class="form-label">Email address</label>
+            <input id="email" name="email" type="email" class="form-input" autocomplete="email" required>
+          </div>
+          <div class="grid gap-5 sm:grid-cols-2">
+            <div>
+              <label for="role" class="form-label">Role</label>
+              <input id="role" class="form-input cursor-not-allowed bg-slate-50 capitalize text-ink-soft" readonly aria-readonly="true" aria-describedby="role-hint" tabindex="-1">
+              <p id="role-hint" class="form-hint">Read-only</p>
+            </div>
+            <div>
+              <label for="status" class="form-label">Account status</label>
+              <input id="status" class="form-input cursor-not-allowed bg-slate-50 text-ink-soft" readonly aria-readonly="true" aria-describedby="status-hint" tabindex="-1">
+              <p id="status-hint" class="form-hint">Read-only</p>
+            </div>
+          </div>
+          <div class="flex flex-col-reverse gap-2 border-t border-line pt-5 sm:flex-row sm:justify-end">
+            <button type="reset" class="btn-outline">Discard changes</button>
+            <button type="submit" class="btn-primary">Save changes</button>
+          </div>
+        </form>
+      </section>
+    </div>
+  </main>
+
+  <script src="../js/vendor/jquery.min.js"></script>
+  <script src="../js/config.js"></script>
+  <script src="../js/utils.js"></script>
+  <script src="../js/icons.js"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/api.js"></script>
+  <script src="../js/ui.js"></script>
+  <script src="../js/validation.js"></script>
+  <script src="../js/notifications.js"></script>
+  <script src="../js/layout.js"></script>
+  <script src="../js/media.js"></script>
+  <script src="../js/components.js"></script>
+  <script src="../js/pages/profile.js"></script>
+</body>
+</html>
