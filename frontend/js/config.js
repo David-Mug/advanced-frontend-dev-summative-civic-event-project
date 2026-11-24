@@ -36,7 +36,7 @@
       // Mirrors backend/src/middlewares/upload.middleware.js
       image: { maxBytes: 2 * 1024 * 1024, exts: ['jpg', 'jpeg', 'png', 'gif'] },
       audio: { maxBytes: 5 * 1024 * 1024, exts: ['mp3', 'wav', 'm4a', 'ogg'] },
-      video: { maxBytes: 8 * 1024 * 1024, exts: ['mp4', 'mov', 'avi', 'mkv'] },
+      video: { maxBytes: 100 * 1024 * 1024, exts: ['mp4', 'mov', 'avi', 'mkv'] },
     }),
   });
 })();

@@ -83,8 +83,8 @@
           </div>
           <div>
             <label for="pr-captions" class="form-label">Caption text <span class="text-danger" aria-hidden="true">*</span></label>
-            <textarea id="pr-captions" name="caption_text" rows="4" class="form-input" maxlength="5000" aria-describedby="pr-captions-hint" required>${escape(promo ? promo.caption_text || '' : '')}</textarea>
-            <p id="pr-captions-hint" class="form-hint">Write what is said in the video, sentence by sentence. Sentences are shown as timed English captions, spread evenly across the video.</p>
+            <textarea id="pr-captions" name="caption_text" rows="6" class="form-input" maxlength="5000" aria-describedby="pr-captions-hint" required>${escape(promo ? promo.caption_text || '' : '')}</textarea>
+            <p id="pr-captions-hint" class="form-hint">Start each line with the time it is spoken, e.g. <code>0:05 Welcome to Kigali</code>. A pasted SRT/VTT file or YouTube transcript also works. Without times, captions are spread evenly and won’t match the speech.</p>
           </div>
           <div data-field>
             <span class="form-label" id="pr-video-label">Video file ${editing ? '<span class="font-normal text-ink-muted">(optional — leave empty to keep the current video)</span>' : '<span class="text-danger" aria-hidden="true">*</span>'}</span>
@@ -92,7 +92,7 @@
             <label for="pr-video" class="flex cursor-pointer flex-col items-center gap-2 rounded-xl border-2 border-dashed border-line bg-brand-light/50 px-4 py-6 text-center transition hover:border-brand">
               <span class="text-brand">${icon('upload', 'h-6 w-6')}</span>
               <span class="text-sm font-semibold text-ink" data-file-name>Choose a video file</span>
-              <span class="text-xs text-ink-muted">MP4, MOV, AVI or MKV · up to 8 MB</span>
+              <span class="text-xs text-ink-muted">MP4, MOV, AVI or MKV · up to 100 MB</span>
             </label>
           </div>
           <div data-video-preview></div>
@@ -117,7 +117,15 @@
       $form.find('[data-file-name]').text(`${file.name} (${utils.formatBytes(file.size)})`);
       if (previewUrl) URL.revokeObjectURL(previewUrl);
       previewUrl = URL.createObjectURL(file);
-      $form.find('[data-video-preview]').html(`<video src="${previewUrl}" controls muted class="aspect-video w-full rounded-xl bg-black" aria-label="Preview of the selected video"></video>`);
+      $form.find('[data-video-preview]').html(`<video src="${previewUrl}" controls muted class="aspect-video w-full rounded-xl bg-black" aria-label="Preview of the selected video"></video>
+        <p class="mt-2 text-xs text-ink-muted" data-cover-note>Creating a cover image from the video…</p>`);
+      // Show the cover residents will see: a screenshot taken from the video itself.
+      const thisUrl = previewUrl;
+      CE.media.captureFrame(thisUrl).then((src) => {
+        if (thisUrl !== previewUrl) return; // a different file was chosen meanwhile
+        $form.find('[data-video-preview] video').attr('poster', src);
+        $form.find('[data-cover-note]').text('Cover image: a screenshot from the video is shown on promo cards and before playback.');
+      }).catch(() => $form.find('[data-cover-note]').text('A cover will be taken from the video once it is uploaded.'));
     });
 
     $form.on('submit', async (e) => {
@@ -154,7 +162,12 @@
           if (!publish) await CE.api.promos.unpublish(res.data.id);
         }
         m.close();
-        ui.toast('success', editing ? `“${data.title}” was updated.` : `“${data.title}” was uploaded.`, editing ? 'Promo updated' : 'Promo created');
+        if (publish) {
+          ui.toast('success', editing ? `“${data.title}” was updated and is visible to residents.` : `“${data.title}” was uploaded and is live for residents.`, editing ? 'Promo updated' : 'Promo published');
+        } else {
+          // Make a hidden draft obvious, so admins don't wonder why residents can't see it.
+          ui.toast('info', `“${data.title}” was saved as a draft and is hidden from residents. Use “Publish” in the list to make it visible.`, 'Saved as draft');
+        }
         load();
       } catch (err) {
         if (progress) progress.done();

@@ -9,14 +9,12 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/styles.css?v=7">
 </head>
 <body class="bg-white">
   <a href="#main" class="skip-link">Skip to main content</a>
   <div class="grid min-h-screen lg:grid-cols-2">
     <aside class="relative hidden overflow-hidden bg-gradient-to-br from-brand-strong to-brand-deep p-12 text-white lg:flex lg:flex-col lg:justify-between" aria-hidden="true">
-      <div class="absolute -right-24 -top-24 h-80 w-80 rounded-full bg-brand/60"></div>
-      <div class="absolute -bottom-20 -left-16 h-64 w-64 rounded-full border-[28px] border-accent/80"></div>
       <div class="relative flex items-center gap-3" data-brand-light></div>
       <div class="relative max-w-md">
         <h2 class="font-heading text-4xl font-extrabold leading-tight text-white">Be part of what happens next.</h2>
@@ -29,9 +27,10 @@
       <p class="relative text-sm text-white">Accessible · Transparent · Community-first</p>
     </aside>
 
-    <main id="main" tabindex="-1" class="flex items-center justify-center bg-brand-light px-4 py-12 sm:px-8">
-      <div class="w-full max-w-md">
-        <a href="../index.html" class="mb-8 flex items-center gap-2.5 no-underline lg:hidden" data-brand aria-label="CivicEvents+ home"></a>
+    <main id="main" tabindex="-1" class="relative flex items-center justify-center overflow-hidden bg-brand-light px-4 py-12 sm:px-8">
+      <div class="logo-pattern" aria-hidden="true"></div>
+      <div class="relative w-full max-w-md">
+        <a href="../index.html" class="mb-8 flex w-fit items-center gap-2.5 rounded-xl bg-brand-light py-1 pr-3 no-underline lg:hidden" data-brand aria-label="CivicEvents+ home"></a>
         <div class="card p-6 sm:p-8">
           <h1 class="font-heading text-2xl font-extrabold">Create your account</h1>
           <p class="mt-1 text-sm text-ink-soft">Already registered? <a href="login.html" class="font-semibold">Sign in</a></p>
@@ -75,14 +74,14 @@
     </main>
   </div>
 
-  <script src="../js/vendor/jquery.min.js"></script>
-  <script src="../js/config.js"></script>
-  <script src="../js/utils.js"></script>
-  <script src="../js/icons.js"></script>
-  <script src="../js/auth.js"></script>
-  <script src="../js/api.js"></script>
-  <script src="../js/ui.js"></script>
-  <script src="../js/validation.js"></script>
-  <script src="../js/pages/auth-pages.js"></script>
+  <script src="../js/vendor/jquery.min.js?v=7"></script>
+  <script src="../js/config.js?v=7"></script>
+  <script src="../js/utils.js?v=7"></script>
+  <script src="../js/icons.js?v=7"></script>
+  <script src="../js/auth.js?v=7"></script>
+  <script src="../js/api.js?v=7"></script>
+  <script src="../js/ui.js?v=7"></script>
+  <script src="../js/validation.js?v=7"></script>
+  <script src="../js/pages/auth-pages.js?v=7"></script>
 </body>
 </html>
